@@ -1,7 +1,7 @@
 <article @php(post_class('h-entry'))>
   <header>
     <h1 class="p-name">
-      {!! $title !!}
+      {!! $title !!} 
     </h1>
 
     @include('partials.entry-meta')
@@ -16,4 +16,5 @@
   </footer>
 
   @php(comments_template())
+  <h3 class="font-mono red">content-single.blade.php</h3>
 </article>
