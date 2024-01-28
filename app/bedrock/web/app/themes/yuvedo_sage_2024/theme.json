@@ -1284,11 +1284,6 @@
           "fontFamily": "ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace",
           "name": "Ui-monospace",
           "slug": "mono"
-        },
-        {
-          "fontFamily": "Bree Serif,serif",
-          "name": "Bree Serif",
-          "slug": "bree"
         }
       ],
       "fontSizes": [

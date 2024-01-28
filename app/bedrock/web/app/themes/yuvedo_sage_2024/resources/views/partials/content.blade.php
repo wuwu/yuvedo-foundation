@@ -7,12 +7,12 @@
     </h2>
   </header>
 
-  <div class="entry-summary bg-white rounded-md">
+  <div class="entry-summary bg-white rounded-md p-4">
     <div class="featured-image rounded-t-lg">@php(the_post_thumbnail())</div>
     <div class="entry-content p-3">
     @php(the_excerpt())
     </div>
   </div>
-    <h3 class="font-mono red">content.blade.php</h3>
+    <h3 class="font-mono text-sky-400">content.blade.php</h3>
 
 </article>

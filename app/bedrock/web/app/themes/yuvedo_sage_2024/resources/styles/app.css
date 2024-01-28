@@ -10,3 +10,11 @@
 .menu-item {
     padding-right: 16px;
 }
+
+h1, h2 , h3 {
+    @apply text-amber-300;
+}
+
+.nav-footer {
+    @apply text-white;
+}

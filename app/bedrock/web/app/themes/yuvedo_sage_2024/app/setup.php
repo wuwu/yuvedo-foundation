@@ -59,6 +59,7 @@ add_action('after_setup_theme', function () {
      */
     register_nav_menus([
         'primary_navigation' => __('Primary Navigation', 'sage'),
+        'footer_navigation' => __('Footer Navigation', 'sage'),
     ]);
 
     /**
@@ -125,14 +126,14 @@ add_action('widgets_init', function () {
         'after_title' => '</h3>',
     ];
 
-    // register_sidebar([
-    //     'name' => __('Primary', 'sage'),
-    //     'id' => 'sidebar-primary',
-    // ] + $config);
+    register_sidebar([
+        'name' => __('Primary', 'sage'),
+        'id' => 'primary-widget',
+    ] + $config);
 
     register_sidebar([
         'name' => __('Footer', 'sage'),
-        'id' => 'sidebar-footer',
+        'id' => 'footer-widget',
     ] + $config);
 });
 
