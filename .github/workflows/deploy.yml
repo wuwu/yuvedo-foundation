@@ -16,7 +16,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8'
+          php-version: '8.2.10'
 
       - name: Install Composer dependencies
         run: |
@@ -24,7 +24,9 @@ jobs:
           composer update --no-dev --optimize-autoloader
 
       - name: Copy environment file
-        run: cp .env.example .env
+        run: |
+          cd ./app/bedrock
+          cp .env.example .env
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -32,10 +34,14 @@ jobs:
           node-version: '18'
 
       - name: Install Yarn dependencies
-        run: yarn install
+        run: |
+          cd ./app/bedrock/web/app/themes/sage
+          yarn install
 
       - name: Build assets
-        run: yarn build
+        run: |
+          cd ./app/bedrock/web/app/themes/sage
+          yarn build
 
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
