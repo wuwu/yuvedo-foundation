@@ -60,9 +60,6 @@ jobs:
           echo "Artifact Path: $(pwd)/artifact/artifact.tar.gz"
           echo "Artifact Size: $(du -sh ./artifact/artifact.tar.gz | awk '{print $1}')"
   
-      - name: List contents of workspace
-        run: ls -R /github/workspace
-
       - name: Upload and Extract artifact on server
         uses: appleboy/ssh-action@master
         with:
