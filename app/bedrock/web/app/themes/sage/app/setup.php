@@ -7,19 +7,7 @@
 namespace App;
 
 use function Roots\bundle;
-use Sage\Container\Container;
 
-// Initialize Sage container
-if (!function_exists('sage')) {
-    function sage($abstract = null, $parameters = [])
-    {
-        if (is_null($abstract)) {
-            return \Roots\Container\Container::getInstance();
-        }
-
-        return \Roots\Container\Container::getInstance()->make($abstract, $parameters);
-    }
-}
 /**
  * Register the theme assets.
  *
@@ -44,34 +32,6 @@ add_action('enqueue_block_editor_assets', function () {
  * @return void
  */
 add_action('after_setup_theme', function () {
-
-    // Load custom service providers
-    collect(glob(app_path('Providers/*.php')))->map(function ($path) {
-        return "App\\Providers\\" . basename($path, '.php');
-    })->filter(function ($provider) {
-        return class_exists($provider);
-    })->map(function ($provider) {
-        return app()->bind($provider);
-    });
-    
-    // Load TaxonomyServiceProvider specifically
-    $taxonomyServiceProvider = 'App\\Providers\\TaxonomyServiceProvider';
-    if (class_exists($taxonomyServiceProvider)) {
-        sage()->bind($taxonomyServiceProvider);
-    }
-    /**
-     * Enable features from the Soil plugin if activated.
-     *
-     * @link https://roots.io/plugins/soil/
-     */
-    add_theme_support('soil', [
-        'clean-up',
-        'nav-walker',
-        'nice-search',
-        'relative-urls',
-        'js-to-footer',
-    ]);
-
     /**
      * Disable full-site editing support.
      *
@@ -86,7 +46,6 @@ add_action('after_setup_theme', function () {
      */
     register_nav_menus([
         'primary_navigation' => __('Primary Navigation', 'sage'),
-        'footer_navigation' => __('Footer Navigation', 'sage'),
     ]);
 
     /**
@@ -155,21 +114,11 @@ add_action('widgets_init', function () {
 
     register_sidebar([
         'name' => __('Primary', 'sage'),
-        'id' => 'primary-widget',
+        'id' => 'sidebar-primary',
     ] + $config);
 
     register_sidebar([
         'name' => __('Footer', 'sage'),
-        'id' => 'footer-widget',
+        'id' => 'sidebar-footer',
     ] + $config);
 });
-
-add_action( 'wp_enqueue_scripts', function (){
-    wp_register_style( 'bree', 'https://fonts.googleapis.com/css?family=Bree+Serif' );
-    wp_enqueue_style('style', get_stylesheet_uri(), array('bree'), '1.0', 'all');
-} );
-
-
-
-
-
