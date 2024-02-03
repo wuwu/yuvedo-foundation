@@ -60,7 +60,10 @@ jobs:
           echo "Artifact Path: $(pwd)/artifact/artifact.tar.gz"
           echo "Artifact Size: $(du -sh ./artifact/artifact.tar.gz | awk '{print $1}')"
   
-      - name: Deploy to Server
+      - name: List contents of workspace
+        run: ls -R /github/workspace
+
+      - name: Upload and Extract artifact on server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -68,5 +71,5 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd /kunden/homepages/15/d821549628/htdocs/yuvedo-wp
-            tar -xzf /github/workspace/artifact/artifact.tar.gz -C .
-            
+            scp -o StrictHostKeyChecking=no -P 22 ./artifact/artifact.tar.gz ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/kunden/homepages/15/d821549628/htdocs/yuvedo-wp/
+            tar -xzf artifact.tar.gz
