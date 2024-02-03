@@ -19,7 +19,9 @@ jobs:
           php-version: '8'
 
       - name: Install Composer dependencies
-        run: composer install --no-dev --optimize-autoloader
+        run: |
+          cd ./app/bedrock
+          composer install --no-dev --optimize-autoloader
 
       - name: Copy environment file
         run: cp .env.example .env
