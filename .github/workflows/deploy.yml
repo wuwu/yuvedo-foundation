@@ -13,13 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Cache Composer dependencies
-        uses: actions/cache@v2
-        with:
-          path: ./app/bedrock/vendor
-          key: composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: composer-
-
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
