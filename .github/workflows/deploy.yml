@@ -54,4 +54,4 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd /kunden/homepages/15/d821549628/htdocs/yuvedo-wp
-            tar -xzf artifact.tar.gz -C .
+            tar -xzf ./app/bedrock/artifact.tar.gz -C .
