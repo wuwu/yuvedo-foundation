@@ -21,7 +21,7 @@ jobs:
       - name: Install Composer dependencies
         run: |
           cd ./app/bedrock
-          composer install --no-dev --optimize-autoloader
+          composer update --no-dev --optimize-autoloader
 
       - name: Copy environment file
         run: cp .env.example .env
