@@ -48,7 +48,9 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          ssh-key-path: /github/workspace/path/to/private/key
+
           script: |
             cd /kunden/homepages/15/d821549628/htdocs/yuvedo-wp
             git pull origin main
