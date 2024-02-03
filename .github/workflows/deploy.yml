@@ -39,6 +39,9 @@ jobs:
           cd ./app/bedrock/web/app/themes/sage
           yarn build
 
+      - name: List files in the current directory
+        run: ls -l
+      
       - name: Create artifact
         run: |
           tar -czf artifact.tar.gz -C ./app/bedrock .
@@ -51,4 +54,4 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd /kunden/homepages/15/d821549628/htdocs/yuvedo-wp
-            tar -xzf /github/workspace/artifact/artifact.tar.gz -C .
+            tar -xzf artifact.tar.gz -C .
