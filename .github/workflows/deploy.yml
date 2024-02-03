@@ -13,16 +13,34 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Cache Composer dependencies
+        uses: actions/cache@v2
+        with:
+          path: ./app/bedrock/vendor
+          key: composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: composer-
+
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2.10'
+          php-version: '8.0'
 
       - name: Install Composer dependencies
         run: |
           cd ./app/bedrock
           composer install --no-dev --optimize-autoloader
 
+      - name: Copy environment file
+        run: |
+          cd ./app/bedrock
+          cp .env.example .env
+
+      - name: Cache Yarn dependencies
+        uses: actions/cache@v2
+        with:
+          path: ./app/bedrock/web/app/themes/sage/node_modules
+          key: yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: yarn-
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -39,13 +57,16 @@ jobs:
           cd ./app/bedrock/web/app/themes/sage
           yarn build
 
-      - name: List files in the current directory
-        run: ls -l
-      
       - name: Create artifact
         run: |
-          tar -czf artifact.tar.gz -C ./app/bedrock .
+          mkdir -p ./artifact
+          tar -czf ./artifact/artifact.tar.gz -C ./app/bedrock .
 
+      - name: Log Artifact Information
+        run: |
+          echo "Artifact Path: $(pwd)/artifact/artifact.tar.gz"
+          echo "Artifact Size: $(du -sh ./artifact/artifact.tar.gz | awk '{print $1}')"
+  
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
@@ -54,4 +75,5 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd /kunden/homepages/15/d821549628/htdocs/yuvedo-wp
-            tar -xzf ./app/bedrock/artifact.tar.gz -C .
+            tar -xzf ./artifact/artifact.tar.gz -C .
+            # Add any other deployment commands here
