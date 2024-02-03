@@ -23,10 +23,6 @@ jobs:
           cd ./app/bedrock
           composer install --no-dev --optimize-autoloader
 
-      - name: Copy environment file
-        run: |
-          cd ./app/bedrock
-          cp .env.example .env
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -55,6 +51,4 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd /kunden/homepages/15/d821549628/htdocs/yuvedo-wp
-            git pull origin main
-            tar -xzf /path/to/artifact.tar.gz -C .
-            # Add any other deployment commands here
+            tar -xzf /github/workspace/artifact/artifact.tar.gz -C .
