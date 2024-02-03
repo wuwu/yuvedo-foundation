@@ -21,7 +21,7 @@ jobs:
       - name: Install Composer dependencies
         run: |
           cd ./app/bedrock
-          composer update --no-dev --optimize-autoloader
+          composer install --no-dev --optimize-autoloader
 
       - name: Copy environment file
         run: |
@@ -29,9 +29,9 @@ jobs:
           cp .env.example .env
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '16'
 
       - name: Install Yarn dependencies
         run: |
@@ -43,18 +43,18 @@ jobs:
           cd ./app/bedrock/web/app/themes/sage
           yarn build
 
+      - name: Create artifact
+        run: |
+          tar -czf artifact.tar.gz -C ./app/bedrock .
+
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          ssh-key-path: /github/workspace/path/to/private/key
-
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /kunden/homepages/15/d821549628/htdocs/yuvedo-wp
             git pull origin main
-            composer install --no-dev --optimize-autoloader
-            yarn install
-            yarn build
+            tar -xzf /path/to/artifact.tar.gz -C .
             # Add any other deployment commands here
