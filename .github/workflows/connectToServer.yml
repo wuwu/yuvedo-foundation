@@ -20,7 +20,7 @@ jobs:
       run: |
         rm -rf ../deploy
         mkdir -p ../deploy
-        cp -TR ./app/bedrock/README.md ../deploy
+        cp -r ./app/bedrock/README.md ../deploy
         tar -czvf deploy.tar.gz -C ../deploy/ .
 
     - name: copy file via ssh password
