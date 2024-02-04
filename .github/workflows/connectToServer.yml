@@ -1,16 +1,18 @@
 name: Deploy to Server
+
 on:
-    push:
-      branches:
-        - dev
+  workflow_dispatch:
 
 jobs:
-    connect:
-        - name: executing remote ssh commands using password
+  connect:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.0.3
         with:
-            host: ${{ secrets.HOST }}
-            username: ${{ secrets.USERNAME }}
-            password: ${{ secrets.PASSWORD }}
-            port: ${{ secrets.PORT }}
-            script: whoami
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: whoami
