@@ -21,11 +21,6 @@ jobs:
           cd ./app/bedrock
           composer install --no-dev --optimize-autoloader
 
-      - name: Copy environment file
-        run: |
-          cd ./app/bedrock
-          cp .env.example .env
-
       - name: Cache Yarn dependencies
         uses: actions/cache@v2
         with:
@@ -50,35 +45,29 @@ jobs:
 
       - name: Create artifact
         run: |
-          mkdir -p ./artifact
-          tar -czf ./artifact/artifact.tar.gz -C ./app/bedrock .
+          rm -rf ../deploy
+          mkdir -p ../deploy
+          cp -r ./app/bedrock/* ../deploy
+          tar -czvf deploy.tar.gz -C ../deploy/ .
 
-      - name: Log Artifact Information
-        run: |
-          echo "Artifact Path: $(pwd)/artifact/artifact.tar.gz"
-          echo "Artifact Size: $(du -sh ./artifact/artifact.tar.gz | awk '{print $1}')"
-  
-      - name: List contents of workspace
-        run: ls -R /github/workspace
-
-      - name: Deploy to Server
-        uses: appleboy/ssh-action@master
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          source: "deploy.tar.gz"
+          target: "yuvedo-wp/"
+      
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
           script: |
-            cd /kunden/homepages/15/d821549628/htdocs/yuvedo-wp
-            tar -xzf /github/workspace/artifact/artifact.tar.gz -C .
-            
-
-            - name: Upload and Extract artifact on server
-            uses: appleboy/ssh-action@master
-            with:
-              host: ${{ secrets.SSH_HOST }}
-              username: ${{ secrets.SSH_USERNAME }}
-              password: ${{ secrets.SSH_PASSWORD }}
-              script: |
-                cd /kunden/homepages/15/d821549628/htdocs/yuvedo-wp
-                scp -o StrictHostKeyChecking=no -P 22 ./artifact/artifact.tar.gz ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/kunden/homepages/15/d821549628/htdocs/yuvedo-wp/
-                tar -xzf artifact.tar.gz
+            cd yuvedo-wp/
+            tar -xzf deploy.tar.gz
+            rm deploy.tar.gz
