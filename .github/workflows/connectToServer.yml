@@ -24,6 +24,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
-          source: "app/bedrock/.env.example"
+          source: ./app/bedrock/README.md
           target: yuvedo-wp/
 
