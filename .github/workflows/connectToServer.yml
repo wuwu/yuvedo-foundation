@@ -1,8 +1,9 @@
-name: Deploy to Server
+name: connect to server test
 
 on:
   workflow_dispatch:
 
+  - uses: actions/checkout@v4
 jobs:
   connect:
     runs-on: ubuntu-latest
@@ -16,3 +17,14 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
           script: whoami
+
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          source: "app/bedrock/.env.example"
+          target: yuvedo-wp/
+
