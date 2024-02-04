@@ -83,4 +83,4 @@ jobs:
               script: |
                 cd /kunden/homepages/15/d821549628/htdocs/yuvedo-wp
                 scp -o StrictHostKeyChecking=no -P 22 ./artifact/artifact.tar.gz ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/kunden/homepages/15/d821549628/htdocs/yuvedo-wp/
-                tar -xzf artifact.tar.gz
+                tar --exclude=.env -xzf artifact.tar.gz
