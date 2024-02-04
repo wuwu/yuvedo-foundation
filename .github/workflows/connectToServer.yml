@@ -3,7 +3,6 @@ name: connect to server test
 on:
   workflow_dispatch:
 
-  - uses: actions/checkout@v4
 jobs:
   connect:
     runs-on: ubuntu-latest
