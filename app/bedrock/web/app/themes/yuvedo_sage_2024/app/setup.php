@@ -34,20 +34,6 @@ add_action('enqueue_block_editor_assets', function () {
  */
 add_action('after_setup_theme', function () {
 
-    // Load custom service providers
-    collect(glob(app_path('Providers/*.php')))->map(function ($path) {
-        return "App\\Providers\\" . basename($path, '.php');
-    })->filter(function ($provider) {
-        return class_exists($provider);
-    })->map(function ($provider) {
-        return app()->bind($provider);
-    });
-    
-    // Load TaxonomyServiceProvider specifically
-    $taxonomyServiceProvider = 'App\\Providers\\TaxonomyServiceProvider';
-    if (class_exists($taxonomyServiceProvider)) {
-        sage()->bind($taxonomyServiceProvider);
-    }
     /**
      * Enable features from the Soil plugin if activated.
      *
