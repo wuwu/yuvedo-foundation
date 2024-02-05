@@ -9,17 +9,6 @@ namespace App;
 use function Roots\bundle;
 use Sage\Container\Container;
 
-// Initialize Sage container
-if (!function_exists('sage')) {
-    function sage($abstract = null, $parameters = [])
-    {
-        if (is_null($abstract)) {
-            return \Roots\Container\Container::getInstance();
-        }
-
-        return \Roots\Container\Container::getInstance()->make($abstract, $parameters);
-    }
-}
 /**
  * Register the theme assets.
  *
