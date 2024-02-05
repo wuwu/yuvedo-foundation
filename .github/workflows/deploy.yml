@@ -24,7 +24,7 @@ jobs:
       - name: Cache Yarn dependencies
         uses: actions/cache@v2
         with:
-          path: ./app/bedrock/web/app/themes/sage/node_modules
+          path: ./app/bedrock/web/app/themes/yuvedo_sage_2024/node_modules
           key: yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: yarn-
 
@@ -35,17 +35,17 @@ jobs:
 
       - name: Install Yarn dependencies
         run: |
-          cd ./app/bedrock/web/app/themes/sage
+          cd ./app/bedrock/web/app/themes/yuvedo_sage_2024
           yarn install
 
       - name: Build assets
         run: |
-          cd ./app/bedrock/web/app/themes/sage
+          cd ./app/bedrock/web/app/themes/yuvedo_sage_2024
           yarn build
 
       - name: Install Composer dependencies
         run: |
-          cd ./app/bedrock/web/app/themes/sage
+          cd ./app/bedrock/web/app/themes/yuvedo_sage_2024
           composer install
 
       - name: Create artifact
