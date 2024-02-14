@@ -1,11 +1,11 @@
 <article @php(post_class('h-entry '))>
   <header>
-    <h1 class="p-name text-xl py-4 text-amber-300">
-      {!! $title !!} 
+    <h1 class="p-name text-xl py-4 font-semibold">
+      {!! $title !!}
     </h1>
   </header>
 
-  <div class="e-content bg-white rounded-md">
+  <div class="e-content bg-white rounded-3xl">
     <div class="featured-image rounded-t-lg">@php(the_post_thumbnail())</div>
 
     @php(the_content())

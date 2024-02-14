@@ -6,7 +6,7 @@
     <?php wp_head(); ?>
   </head>
 
-  <body class="bg-indigo-200"<?php body_class(); ?>>
+  <body class="bg-gray-100"<?php body_class(); ?>>
     <?php wp_body_open(); ?>
     <?php do_action('get_header'); ?>
 
