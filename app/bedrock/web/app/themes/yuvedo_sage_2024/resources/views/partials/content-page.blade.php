@@ -1,6 +1,6 @@
-<div class="e-content bg-white rounded-3xl py-8 px-12">
+<div class="e-content bg-white rounded-3xl px-24 py-12">
     <div class="featured-image rounded-3xl">
-      @php if(has_post_thumbnail()) { the_post_thumbnail('full',array('class' => 'rounded-lg object-cover pb-8') ); } @endphp
+      @php if(has_post_thumbnail()) { the_post_thumbnail('full',array('class' => 'rounded-lg object-cover w-full pb-8') ); } @endphp
     </div>
 
     {!! the_content() !!}
