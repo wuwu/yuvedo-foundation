@@ -11,7 +11,7 @@ background: linear-gradient(308deg, rgba(237,237,241,0.29735644257703087) 2%, rg
     @apply flex list-none
 }
 
-.menu-item {
+.nav-primary .menu-item {
     padding-right: 16px;
 }
 
@@ -19,8 +19,8 @@ h1, h2 , h3 {
     @apply font-medium;
 }
 
-.nav-footer {
-    @apply text-white;
+.nav-footer a {
+    @apply hover:text-primary pl-4;
 }
 
 .featured-image {
