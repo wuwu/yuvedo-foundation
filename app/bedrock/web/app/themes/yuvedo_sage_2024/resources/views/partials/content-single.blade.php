@@ -1,4 +1,4 @@
-<article @php(post_class())>
+<article @php(post_class('post-full'))>
   <div class="rounded-3xl p-12 my-8 border-separate border-spacing-2 border border-light02 ">
     <a href="{{ wp_get_referer() }}" class="inline-block mb-4 text-primary hover:text-primaryhover">&larr; Back</a>
 

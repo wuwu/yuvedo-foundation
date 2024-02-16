@@ -12,7 +12,7 @@
   @endif
   <div class="container m-auto grid lg:grid-cols-3 lg:gap-8">
   @while(have_posts()) @php(the_post())
-    @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
+            @include('partials.post-teaser')
   @endwhile
   </div>
 
