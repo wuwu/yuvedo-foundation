@@ -20,7 +20,7 @@
           </li>
           <li>
             <a href="https://www.linkedin.com/company/yuvedo-foundation" target="_blank">
-              <img class="w-auto" src="@asset('images/icons/linkedIn.png')">
+              <img class="w-auto" src="@asset('images/icons/linkedin.png')">
             </a>
           </li>
         </ul>

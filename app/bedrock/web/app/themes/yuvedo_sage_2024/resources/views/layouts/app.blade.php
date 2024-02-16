@@ -4,7 +4,7 @@
 
 @include('sections.header')
 
-  <main id="main" class="mx-auto max-w-screen-2xl mt-16 rounded-xl p-8 font-inter text-l">
+  <main id="main" class="mx-auto max-w-screen-2xl lg:mt-32 rounded-xl p-8 font-inter text-l">
     @yield('content')
   </main>
 
