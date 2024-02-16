@@ -77,7 +77,8 @@
         "wpackagist-plugin/polylang",
         "wpackagist-plugin/advanced-custom-fields",
         "wpackagist-plugin/disable-gutenberg",
-        "wpackagist-plugin/turn-comments-off"
+        "wpackagist-plugin/turn-comments-off",
+        "wpackagist-plugin/pages-with-category-and-tag"
       ],
       "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
       "web/app/themes/{$name}/": ["type:wordpress-theme"]

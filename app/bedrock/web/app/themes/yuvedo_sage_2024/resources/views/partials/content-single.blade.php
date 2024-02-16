@@ -1,13 +1,15 @@
-<article @php(post_class('h-entry '))>
-  <header>
-    <h1 class="p-name text-xl py-4 font-semibold">
-      {!! $title !!}
-    </h1>
-  </header>
+<article @php(post_class())>
+  <div class="rounded-3xl p-12 my-8 border-separate border-spacing-2 border border-light02 ">
+    <a href="{{ wp_get_referer() }}" class="inline-block mb-4 text-primary hover:text-primaryhover">&larr; Back</a>
 
-  <div class="e-content border-light02 rounded-lg">
-    <div class="featured-image rounded-t-lg">@php(the_post_thumbnail())</div>
-
+    <div class="featured-image rounded-t-lg">
+      @php(the_post_thumbnail('full',array('class' => 'project-image object-cover w-full rounded-lg') ))
+    </div>
+    <header>
+      <h1 class="p-name text-4xl py-8 font-semibold">
+        {!! $title !!}
+      </h1>
+    </header>
     @php(the_content())
   </div>
 
