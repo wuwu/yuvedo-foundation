@@ -1,10 +1,12 @@
 import domReady from '@roots/sage/client/dom-ready';
+import Alpine from 'alpinejs'
 
 /**
  * Application entrypoint
  */
 domReady(async () => {
-  // ...
+  window.Alpine = Alpine
+  Alpine.start();
 });
 
 /**
