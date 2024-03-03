@@ -134,6 +134,11 @@ add_action('widgets_init', function () {
     ] + $config);
 
     register_sidebar([
+        'name' => __('Header', 'sage'),
+        'id' => 'header-widget',
+    ] + $config);
+
+    register_sidebar([
         'name' => __('Footer', 'sage'),
         'id' => 'footer-widget',
     ] + $config);
