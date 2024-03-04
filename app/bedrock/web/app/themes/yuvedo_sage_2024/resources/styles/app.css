@@ -4,9 +4,12 @@
 
 
 body {
-  @apply tracking-tight;
-background: rgb(237,237,241);
-background: linear-gradient(308deg, rgba(237,237,241,0.29735644257703087) 2%, rgba(9,9,121,0.2553396358543417) 26%, rgba(170,203,223,1) 51%, rgba(0,212,255,0.14329481792717091) 75%, rgba(204,204,224,1) 98%);
+  @apply tracking-tight bg-gray-100;
+  background-image: "../images/yuvedo_logo_footer.png";
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  /* background: rgba(237,237,241, .55); */
+/* background: linear-gradient(308deg, rgba(237,237,241,0.29735644257703087) 2%, rgba(9,9,121,0.2553396358543417) 26%, rgba(170,203,223,1) 51%, rgba(0,212,255,0.14329481792717091) 75%, rgba(204,204,224,1) 98%); */
 }
 
 .nav {
