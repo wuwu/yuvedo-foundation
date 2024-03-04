@@ -14,6 +14,7 @@ class Navigation extends Composer
      */
     protected static $views = [
         'partials.navigation',
+        'partials.navigation-mobile'
     ];
 
     /**

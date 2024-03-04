@@ -1,7 +1,7 @@
 @if ($navigation)
-<nav class="hidden lg:flex justify-center">
+<nav class="flex justify-center">
 
-  <ul class="flex flex-wrap items-center list-none font-semibold text-lg">
+  <ul class="flex flex-col items-end list-none font-semibold text-lg">
     @foreach ($navigation as $item)
       @if ($item->children)
         <li class="pr-4 lg:pr-4 underline-offset-2 relative flex items-center space-x-1 {{ $item->classes ?? '' }} " x-data="{ open: false }" @mouseenter="open = true"

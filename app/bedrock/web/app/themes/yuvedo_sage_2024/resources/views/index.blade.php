@@ -10,9 +10,9 @@
 
     {!! get_search_form(false) !!}
   @endif
-  <div class="container m-auto grid lg:grid-cols-3 lg:gap-8">
+  <div class="container m-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
   @while(have_posts()) @php(the_post())
-            @include('partials.post-teaser')
+    @include('partials.post-teaser')
   @endwhile
   </div>
 
