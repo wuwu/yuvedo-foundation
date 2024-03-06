@@ -1,6 +1,6 @@
-/** @type {import('tailwindcss').Config} config */
+import plugin from 'tailwindcss/plugin.js';
 
-const plugin = require('tailwindcss/plugin');
+/** @type {import('tailwindcss').Config} config */
 
 const config = {
   content: ['./index.php', './app/**/*.php', './resources/**/*.{php,vue,js}'],

@@ -1246,6 +1246,56 @@
           "color": "#4c0519",
           "name": "Rose 950",
           "slug": "rose-950"
+        },
+        {
+          "color": "#7075f4",
+          "name": "Primary",
+          "slug": "primary"
+        },
+        {
+          "color": "#5e62cd",
+          "name": "Primaryhover",
+          "slug": "primaryhover"
+        },
+        {
+          "color": "#edeefc",
+          "name": "Light01",
+          "slug": "light01"
+        },
+        {
+          "color": "#dddef0",
+          "name": "Light02",
+          "slug": "light02"
+        },
+        {
+          "color": "#c5c7ff",
+          "name": "ActionL1",
+          "slug": "actionl1"
+        },
+        {
+          "color": "#a5a7d6",
+          "name": "ActionL2",
+          "slug": "actionl2"
+        },
+        {
+          "color": "#3ae6e6",
+          "name": "Accentone",
+          "slug": "accentone"
+        },
+        {
+          "color": "#8206ff",
+          "name": "Accenttwo",
+          "slug": "accenttwo"
+        },
+        {
+          "color": "#28ec9a",
+          "name": "Accentthree",
+          "slug": "accentthree"
+        },
+        {
+          "color": "#00bfe9",
+          "name": "Alertinfodark",
+          "slug": "alertinfodark"
         }
       ]
     },
@@ -1284,6 +1334,11 @@
           "fontFamily": "ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace",
           "name": "Ui-monospace",
           "slug": "mono"
+        },
+        {
+          "fontFamily": "Inter,sans-serif",
+          "name": "Inter",
+          "slug": "inter"
         }
       ],
       "fontSizes": [

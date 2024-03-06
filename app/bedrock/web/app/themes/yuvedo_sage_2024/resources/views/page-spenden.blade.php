@@ -1,12 +1,9 @@
-{{--
-  Template Name: Category Overview
---}}
-
 @extends('layouts.app')
-
+<h1>SPEEEEEENDEN</h1>
 @section('content')
   @while(have_posts()) @php(the_post())
     @include('partials.page-header')
-    @include('partials.content-page')
+    @includeFirst(['partials.content-page', 'partials.content'])
   @endwhile
+  <h3 class="font-mono text-sky-400">page.blade.php</h3>
 @endsection
