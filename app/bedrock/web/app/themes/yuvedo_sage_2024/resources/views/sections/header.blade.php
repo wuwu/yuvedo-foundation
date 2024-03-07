@@ -23,7 +23,7 @@
       x-transition:leave="transition ease-in duration-300"
       x-transition:leave-start="opacity-100 transform scale-100"
       x-transition:leave-end="opacity-0 transform scale-90"
-      class="absolute top-16 right-4 bg-white border-1 border-gray-300 rounded-lg p-2 z-50">
+      class="absolute top-16 right-4 z-50">
       <!-- Menu Items -->
       @if (has_nav_menu('primary_navigation'))
         @include('partials.navigation-mobile')
