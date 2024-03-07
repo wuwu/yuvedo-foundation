@@ -16,11 +16,11 @@ if (import.meta.webpackHot) import.meta.webpackHot.accept(console.error);
 
 
 document.addEventListener('alpine:init', () => {
-    Alpine.data('menuState', () => ({
-        open: false,
+    Alpine.data('appState', () => ({
+        menuOpen: false,
 
-        toggle() {
-            this.open = ! this.open
+        toggleMenu() {
+            this.menuOpen = ! this.menuOpen
         },
     }))
 })
