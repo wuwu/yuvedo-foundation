@@ -1,4 +1,4 @@
-<div class="e-content bg-white rounded-3xl px-24 py-12">
+<div class="e-content bg-white rounded-3xl px-4 md:px-8 lg:px-24 py-4 md-py-8 lg:py-12">
     <div class="featured-image rounded-3xl">
       @php if(has_post_thumbnail()) { the_post_thumbnail('full',array('class' => 'rounded-lg object-cover w-full pb-8') ); } @endphp
     </div>
@@ -20,7 +20,7 @@
 @endphp
 
     @if($related_posts->have_posts())
-      <div class="rounded-3xl p-12 my-8 border-separate border-spacing-2 border border-light02">
+      <div class="rounded-3xl p-2 md:p-8 lg:p-12 my-4 md:my-8 border-separate border-spacing-2 border border-light02">
         <div class="related-posts grid md:grid-cols-2 xl:grid-cols-3 gap-4">
           @while($related_posts->have_posts()) @php $related_posts->the_post() @endphp
             @include('partials.post-teaser')

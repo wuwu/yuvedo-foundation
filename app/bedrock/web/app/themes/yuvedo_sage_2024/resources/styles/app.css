@@ -46,5 +46,16 @@ ul.nav, ul.sub-menu {
 }
 
 article.post-full a {
-  @apply underline font-semibold hover:text-primaryhover
+  @apply underline font-semibold hover:text-primaryhover;
+}
+
+.widget_polylang{
+  @apply bg-white border border-gray-300 rounded-lg py-2.5 px-4;
+}
+
+
+
+header .widget_search,
+header .widget_polylang {
+  @apply hidden md:block;
 }

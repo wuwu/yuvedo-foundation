@@ -3,7 +3,8 @@ $classes = [
     'post-teaser',
     'bg-white',
     'rounded-lg',
-    'p-4'
+    'p-2',
+    'md:p-4'
 ];
 $excerpt = get_the_excerpt();
 
