@@ -145,7 +145,7 @@ add_action('widgets_init', function () {
 });
 
 add_action( 'wp_enqueue_scripts', function (){
-    wp_register_style( 'inter', 'https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-4,400..600&display=swap' );
+    wp_register_style( 'inter', 'https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap' );
     wp_enqueue_style('style', get_stylesheet_uri(), array('inter'), '1.0', 'all');
 } );
 
