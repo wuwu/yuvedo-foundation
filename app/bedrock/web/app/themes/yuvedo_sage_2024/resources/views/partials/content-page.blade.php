@@ -5,9 +5,7 @@
     </div>
   @endif
     {!! the_content() !!}
-
     {!! dynamic_sidebar('primary-widget') !!}
 </div>
 
-<p class="font-mono text-alertinfodark">Current Category ID: {{ $category_id }}</p>
 <h3 class="font-mono text-alertinfodark">content-page.blade.php</h3>

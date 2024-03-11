@@ -12,7 +12,6 @@
     <?php do_action('get_header'); ?>
 
     <div id="app">
-      <h1>a new wp site</h1>
       <?php echo view(app('sage.view'), app('sage.data'))->render(); ?>
     </div>
 
