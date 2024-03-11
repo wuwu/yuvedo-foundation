@@ -15,9 +15,46 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2.10'
+
+      - name: Install Composer dependencies
+        run: |
+          cd ./app/bedrock
+          composer install --no-dev --optimize-autoloader
+
+      - name: Cache Yarn dependencies
+        uses: actions/cache@v2
+        with:
+          path: ./app/bedrock/web/app/themes/yuvedo_sage_2024/node_modules
+          key: yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: yarn-
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Yarn dependencies
+        run: |
+          cd ./app/bedrock/web/app/themes/yuvedo_sage_2024
+          yarn install
+
+      - name: Build assets
+        run: |
+          cd ./app/bedrock/web/app/themes/yuvedo_sage_2024
+          yarn build
+
+      - name: Install Composer dependencies
+        run: |
+          cd ./app/bedrock/web/app/themes/yuvedo_sage_2024
+          composer install
+
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
-        
+        run: zip release.zip ./app/bedrock/web/* -r
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
@@ -43,7 +80,7 @@ jobs:
         run: |
           unzip release.zip
           rm release.zip
-      
+
       - name: Login to Azure
         uses: azure/login@v1
         with:
@@ -58,4 +95,3 @@ jobs:
           app-name: 'yuvedofoundation'
           slot-name: 'Production'
           package: .
-          
