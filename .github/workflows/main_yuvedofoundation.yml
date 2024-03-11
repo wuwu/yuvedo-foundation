@@ -1,3 +1,6 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
 name: Deploy WordPress app to Azure Web App - yuvedofoundation
 on:
   push:
@@ -16,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Zip artifact for deployment
-        run: zip -r release.zip ./app/bedrock/*
+        run: zip release.zip ./app/bedrock -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -41,7 +44,8 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: |
-          unzip release.zip -d $HOME/deploy
+          unzip release.zip
+          rm release.zip
 
       - name: Login to Azure
         uses: azure/login@v1
@@ -56,4 +60,4 @@ jobs:
         with:
           app-name: 'yuvedofoundation'
           slot-name: 'Production'
-          package: $HOME/deploy/${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/wordpress-app'
