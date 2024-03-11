@@ -7,9 +7,10 @@ on:
     branches:
       - main
   workflow_dispatch:
+
 env:
   AZURE_WEBAPP_NAME: my-app-name    # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: './custom_wp_bedrock'
+  AZURE_WEBAPP_PACKAGE_PATH: '.'
 
 jobs:
   build:
@@ -19,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./app/bedrock -r
+        run: zip release.zip ./app/bedrock/* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -61,3 +62,4 @@ jobs:
           app-name: 'yuvedofoundation'
           slot-name: 'Production'
           package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+          target-path: 'home/site/wwwroot/custom_wp_bedrock/'
