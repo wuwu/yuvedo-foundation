@@ -3,9 +3,6 @@
 
 name: Deploy WordPress app to Azure Web App - yuvedofoundation
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 env:
