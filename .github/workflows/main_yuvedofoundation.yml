@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./app/bedrock/* -r
+        run: zip release.zip ./app/* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
