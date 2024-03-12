@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Copy nginx configuration
-cp /home/site/app/bedrock/nginx.conf /etc/nginx/sites-enabled/default
+cp /home/site/wwwroot/app/nginx.conf /etc/nginx/sites-enabled/default
 
 # Reload nginx service
 service nginx reload
