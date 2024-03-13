@@ -1,3 +1,4 @@
 app/bedrock/.env_ionos
 conf/
 logs/
+sql/
