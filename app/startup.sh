@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cp /home/site/ext/composer.phar /usr/local/bin/composer
 # Copy nginx configuration
 cp /home/site/wwwroot/app/nginx.conf /etc/nginx/sites-enabled/default
 
